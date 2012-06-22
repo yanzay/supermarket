@@ -16,6 +16,13 @@ class Checkout
     @items = []
   end
 
+  def to_s
+    resp = "----\nBasket: "
+    item_codes = @items.map { |item| item.code }
+    resp += item_codes * " "
+    resp += "\nTotal price expected: " + total.to_s
+  end
+
   attr_reader :items
 
 end
