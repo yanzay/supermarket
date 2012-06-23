@@ -8,7 +8,7 @@ require_relative "./lib/rules/buy_n_get_one_free_pricing_rule"
 
 puts "Test Data"
 
-prods = ProductRepository.new
+prods = ProductRepository.instance
 
 fruit_tea = prods.get_by_code("FR1")
 strawberry = prods.get_by_code("SR1")

@@ -1,4 +1,5 @@
 class PricingRules
+
   def initialize()
     @rules = []
   end
@@ -8,12 +9,11 @@ class PricingRules
   end
 
   def calculate(items)
-    discount = 0
-    sum = 0
-    @rules.each { |rule| discount += rule.calculate_discount(items) }
-    items.each { |item| sum += item.price }
+    discount = @rules.inject(0) do |res, rule|
+      res + rule.calculate_discount(items)
+    end
+    sum = items.inject(0) { |res, item| res + item.price }
     (sum - discount).round(2)
   end
 
-  attr_reader :rules
 end
