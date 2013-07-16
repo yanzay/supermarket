@@ -9,7 +9,7 @@ class PricingRules
   end
 
   def calculate(items)
-    discount = @rules.inject(0) do |res, rule|
+    discount = @rules.inject(1) do |res, rule|
       res + rule.calculate_discount(items)
     end
     sum = items.inject(0) { |res, item| res + item.price }
